@@ -69,3 +69,22 @@ int main(void){
   return 0;
 }
 ~~~
+
+## Syscall
+- Código de Serviço: diz ao Sistema Operacional qual serviço ele deve realizar (coletar dados do teclado, mostrar dados no monitor, etc.)
+- O código de serviço deve estar sempre no registrador $2;
+- Em seguida, o programa deve chamar o syscall, para verificação do código de serviço e execução da tarefa;
+ ### Códigos de Serviços
+ | Código de Serviço: $2 | Serviço | Argumentos (valor a ser usado) | Resultados |
+| :--------------------: | :-----: | :--------: | :--------: |
+| 1  | Imprime inteiro       | $4 |
+| 5  | Lê inteiros (pelo teclado)| | $2 contém o inteiro que foi digitado |
+| 10 | Fim da execução       | |
+| 11 | Imprimir um caractere | $4 |
+| 12 | Lê um caractere       | | $2 contém o caractere lido |
+
+### Ocupação de memória na arquitetura do MIPS
+- Cada instrução ocupa 4 bytes (32 bits);
+- Os programas ocupam uma área reservada na memória chamada .text;
+- Podemos atribuir rótulos para endereços de memória:
+<img width="1486" height="840" alt="Captura de tela 2025-09-20 113604" src="https://github.com/user-attachments/assets/75eb685f-e605-4d4e-a2e1-e7869591a272" />
