@@ -78,7 +78,12 @@ int main(void){
  | Código de Serviço: $2 | Serviço | Argumentos (valor a ser usado) | Resultados |
 | :--------------------: | :-----: | :--------: | :--------: |
 | 1  | Imprime inteiro       | $4 |
+| 2 | Imprime float | $f12 |
+ | 3 | Imprime double | $f12|
+ | 4| Imprime string | $4 |
 | 5  | Lê inteiros (pelo teclado)| | $2 contém o inteiro que foi digitado |
+| 6| Lê float (teclado) | | $f0 |
+| 7| Lê double | | $f0 |
 | 10 | Fim da execução       | |
 | 11 | Imprimir um caractere | $4 |
 | 12 | Lê um caractere       | | $2 contém o caractere lido |
