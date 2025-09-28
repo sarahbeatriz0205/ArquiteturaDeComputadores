@@ -1,6 +1,6 @@
 # Assembly - MARS MIPS
 
-## Comandos Básicos - Assembly (Aula 1)
+## Comandos Básicos - Assembly
 - Registrador $0 está aterrado, então sempre terá o valor 0 e não é possível mudá-lo;
 - Registrador $31 é usado para chamada de subrotina, quando há modularização do meu código. Funciona como um retorno;
 - Registrador $29: apontador da pilha;
@@ -69,6 +69,60 @@ int main(void){
   return 0;
 }
 ~~~
+
+#### Multiplicação
+- mult $fonte1, $fonte2
+- valores recebidos pelos registradores HI e LO;
+- Variação mul: sintaxe idêntica ao add e o sub, mas o registrador de destino é o LO
+
+#### Divisão
+- div $fonte1, $fonte2
+- registrador HI: recebe o resto da divisão;
+- registrador LO: recebe o quociente da divisão
+
+#### Move from HI - mfhi
+- mfhi $destino
+- move o valor que está em HI para o $destino.
+#### Move from LO - mflo
+- mflo $destino
+- move o valor de LO para o $destino.
+
+### Operações Lógicas
+#### AND - Bit a Bit (Bitwise)
+- and $destino, $fonte1, $fonte2
+- *obs: O operador AND bit a bit (&) compara cada bit do primeiro operando com o bit correspondente do segundo operando. Se ambos os bits forem 1, o bit de resultado correspondente será definido como 1. Caso contrário, o bit de resultado correspondente é definido como zero (0).*
+
+#### OR - Bit a Bit (Bitwise)
+- or $destino, $fonte1, $fonte2
+
+#### NOR - Bit a Bit (Bitwise)
+- nor $destino, $fonte1, $fonte2
+
+#### Shift Left Logical - desloca bits para a esquerda (<<)
+- sll $destino, $fonte1, Constante (valor fixo)
+- a Constante será o número de vezes que o bit será deslocado
+- obs: ao deslocar uma casa para a esquerda, multiplico por 2
+
+ | Deslocamento | Valor |
+| :---------: | :-------: |
+| 00101 | 5 | 
+| 01010 | 10 |
+| 10100 | 20 |
+| 11000 | 40 |
+
+#### Shift Right Logical - desloca bits para a direita (>>)
+- srl $destino, $fonte1, Constante
+- a Constante será o número de vezes que o bit será deslocado
+- obs: ao deslocar uma casa para a esquerda, divido por 2
+
+ | Deslocamento | Valor |
+| :---------: | :-------: |
+| 00001000   | 8 |
+| 00000100   | 4 |
+| 00000010   | 2 | 
+| 00000001   | 1 |  
+| 00000000   | 0 | 
+
 
 ## Syscall
 - Código de Serviço: diz ao Sistema Operacional qual serviço ele deve realizar (coletar dados do teclado, mostrar dados no monitor, etc.)
