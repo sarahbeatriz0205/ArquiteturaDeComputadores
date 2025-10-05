@@ -147,3 +147,50 @@ int main(void){
 - Os programas ocupam uma área reservada na memória chamada .text;
 - Podemos atribuir rótulos para endereços de memória:
 <img width="1486" height="840" alt="Captura de tela 2025-09-20 113604" src="https://github.com/user-attachments/assets/75eb685f-e605-4d4e-a2e1-e7869591a272" />
+
+## Comandos de decisão
+### Como funciona o registrador PC?
+- É um registrador de 32 bits;
+- Aponta para a instrução que será executada a seguir;
+- Uma série de instruções são carregadas na memória da máquina, tendo cada instrução um endereço próprio na memória;
+- Quando o código estiver pronto e alocado na memória, o sistema operacional dará um comando de "START", que pede para que o registrador PC crie uma cópia do endereço de memória onde está a 1ª instrução;
+- Logo após, o sistema operacional dá uma instrução de "EXEC", que faz com que a instrução que está na memória que PC tem a cópia seja executada e atribui a PC a cópia do endereço de memória da próxima instrução (processo que ocorre até o fim do código);
+
+### Manipulação do PC
+- Para que seja possível executar algo que envolva decisão, é necessário que haja manipulação do registrador PC, uma vez que ele executa tudo na ordem que está lhe sendo passado;
+
+### Condicionais (para manipulação de PC)
+#### Instrução Branch if EQuals (beq)
+- beq $fonte1, $fonte2, rótulo
+- O que faz:
+```
+    se ($fonte1 == $fonte2):
+       PC = endereço de memória do rótulo (&rótulo);
+    senão:
+       PC = PC + 4 // salta para o próximo endereço de memória (segue o fluxo normalmente)
+```
+- Exemplo:
+```
+     beq $8, $9, main
+```
+
+#### Instrução Branch if Not EQuals (bne)
+- bne $fonte1, $fonte2, rótulo
+- O que faz:
+```
+     se ($fonte1 != $fonte2):
+        PC = endereço de memória do rótulo (&rótulo)
+     senão:
+        PC = PC + 4 // salta para o próximo endereço de memória normalmente
+```
+- Exemplo:
+```
+     bne $8, $9, main
+```
+
+#### Salto absoluto (Instrução Jump)
+- j rótulo
+- O que faz:
+```
+    PC = &rótulo // atribui um rótulo a PC, com imediatez
+```
