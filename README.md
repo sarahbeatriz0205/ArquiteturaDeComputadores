@@ -194,3 +194,12 @@ int main(void){
 ```
     PC = &rótulo // atribui um rótulo a PC, com imediatez
 ```
+
+
+#### É par ou ímpar? Explicação do código abaixo
+- Adiciona ao registrador $2 a tarefa 5 do syscall, para leitura de inteiro;
+- Chama o syscall;
+- Faz um AND entre o inteiro 1 (00000000000000000000000000000001) e o inteiro que foi inserido, que está guardado no registrador $2;
+- Quando passar para o "beq", ele vai verificar:   se o que está no registrador $8 for igual a o que está no registrador $0 (sempre zero), ele passa para as instruções que estão no rótulo "par", que contém a atribuição de um caractere 'p' para imprimir;   Senão, ele passa para a próxima instrução, que já diz que o inteiro é ímpar, com a impressão do caractere 'i';
+
+<img width="1510" height="766" src="https://github.com/user-attachments/assets/78ff6299-d2da-468e-a78b-8c88d6220148" />
