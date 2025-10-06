@@ -195,6 +195,15 @@ int main(void){
     PC = &rótulo // atribui um rótulo a PC, com imediatez
 ```
 
+#### SLT
+- slt $destino, $fonte1, $fonte2
+```
+    se ($fonte1 < $fonte2):
+       $destino = 1 // recebe 1
+    senão:
+       $destino = 0 // recebe 0
+```
+
 
 #### É par ou ímpar? Explicação do código abaixo
 - Adiciona ao registrador $2 a tarefa 5 do syscall, para leitura de inteiro;
