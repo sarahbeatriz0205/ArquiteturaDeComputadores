@@ -45,15 +45,15 @@ mediaPonderada: addi $13, $0, 2 # peso 2
                 mult $8, $10
                 mflo $13
                 div $13, $15
-                mflo $13
-                slt $15, $13, $8 # $8 = 10 ; $13 = 20
-                beq $15, $0, subtracaoSemNegativoParte1
-                j subtracaoSemNegativoParte2
+                mflo $13 # cálculo final da regra de três
+                slt $15, $13, $12 # se o cálculo final for menor
+                beq $15, $0, saldoNegativo
+                j subtracao
 
-subtracaoSemNegativoParte1: sub $15, $12, $13
-		      j fim
+subtracao: sub $15, $12, $13
+		   j fim
 
-subtracaoSemNegativoParte2: sub, $15, $13, $12
+saldoNegativo: add $15, $0, $0
                 
      # desconto da média          
 fim: add $4, $0, $15
