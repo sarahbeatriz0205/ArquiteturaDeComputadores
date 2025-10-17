@@ -212,3 +212,13 @@ int main(void){
 - Quando passar para o "beq", ele vai verificar:   se o que está no registrador $8 for igual a o que está no registrador $0 (sempre zero), ele passa para as instruções que estão no rótulo "par", que contém a atribuição de um caractere 'p' para imprimir;   Senão, ele passa para a próxima instrução, que já diz que o inteiro é ímpar, com a impressão do caractere 'i';
 
 <img width="1510" height="766" src="https://github.com/user-attachments/assets/78ff6299-d2da-468e-a78b-8c88d6220148" />
+
+## Laços
+#### Estrutura
+~~~asm
+addi $9, $0, 10
+addi $8, $0, 1 #i
+test: beq $9, $8, forEnd
+addi $8, $8, 1
+j test
+~~~
