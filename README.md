@@ -145,6 +145,7 @@ int main(void){
 ### Ocupação de memória na arquitetura do MIPS
 - Cada instrução ocupa 4 bytes (32 bits);
 - Os programas ocupam uma área reservada na memória chamada .text;
+- .data: onde estão os dados
 - Podemos atribuir rótulos para endereços de memória:
 <img width="1486" height="840" alt="Captura de tela 2025-09-20 113604" src="https://github.com/user-attachments/assets/75eb685f-e605-4d4e-a2e1-e7869591a272" />
 
@@ -221,4 +222,24 @@ addi $8, $0, 1 #i
 test: beq $9, $8, forEnd
 addi $8, $8, 1
 j test
+~~~
+
+## Vetores
+### Ocupação de memória na arquitetura do MIPS
+- Cada instrução ocupa 4 bytes (32 bits)
+- .text: espaço de memória reservado para o programa
+- .data: espaço de memória reservado para os dados
+
+### .DATA
+- sw (story word)
+~~~asm
+$z, imm ($k)
+~~~
+  
+- lw (load word)
+~~~asm
+$processadorDeDestino, imm ($y)
+
+# $y = valor entre 1 e 31
+# endereço = conteúdo de $y + imm; ponteiro 
 ~~~
