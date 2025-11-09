@@ -210,7 +210,7 @@ int main(void){
 <img width="1510" height="766" src="https://github.com/user-attachments/assets/78ff6299-d2da-468e-a78b-8c88d6220148" />
 
 ## Laços
-#### Estrutura
+#### Estrutura For
 ~~~asm
 addi $9, $0, 10
 addi $8, $0, 1 #i
@@ -218,25 +218,93 @@ test: beq $9, $8, forEnd
 addi $8, $8, 1
 j test
 ~~~
+- Estrutura em palavras: **Variável de inicialização (i) ---- Teste (se o "i" for igual a tal valor, pare o laço) ---- Incremento (soma i + 1);**
+~~~asm
+# Laço For
+.text
+main: addi $8, $0, 0 # inicialização do laço (i)
+      addi $9, $0, 4 # condição de parada do laço
+
+teste: beq $8, $9, saiDoLaco
+      
+
+       addi $8, $8, 1 # i = i + 1
+       j teste
+
+saiDoLaco:
+~~~
+~~~asm
+# Laço While
+.text
+main: addi $8, $0, 0 # inicialização do laço (i)
+      addi $9, $0, 10 # condição de parada do laço
+
+cont: # instruções aqui!
+
+      addi $8, $8, 1 # incremento: i = i + 1
+      bne $8, $9, cont # se o valor de i for diferente de 10 ($9), vá para cont; quando for falso, sai da laço
+
+saiDoLaco:
+~~~
 
 ## Vetores
 ### Ocupação de memória na arquitetura do MIPS
 - Cada instrução ocupa 4 bytes (32 bits)
 - .text: espaço de memória reservado para o programa
 - .data: espaço de memória reservado para os dados
-- 
+
 <img width="1486" height="840" alt="Captura de tela 2025-09-20 113604" src="https://github.com/user-attachments/assets/75eb685f-e605-4d4e-a2e1-e7869591a272" />
 
 ### .DATA
-- sw (story word)
+- sw (store word)
 ~~~asm
-$z, imm ($k)
+$fonte2, Constante($fonte1)
 ~~~
-  
-- lw (load word)
-~~~asm
-$processadorDeDestino, imm ($y)
+O que o "sw" faz:
 
-# $y = valor entre 1 e 31
-# endereço = conteúdo de $y + imm; ponteiro 
+
+  
+- lw (load word): carrega 32 bits para o banco de registradores
+- Estrutura:
+```
+lw $destino, Constante($fonte1)
+
+Operação:
+$destino = MEMORIA[$fonte1 + Const]
+A operação de soma acima vai apontar para o local da memória que eu quero
+```
+O que o "lw" faz:
+
+<img width="480" height="339" alt="Captura de tela 2025-11-09 105234" src="https://github.com/user-attachments/assets/f7712eb4-e814-4aba-b45d-f940761a2579" />
+
+
+~~~asm
+# Exemplo
+
+.data # espaço reservado para guardar os dados
+.word 32 # 0x10010000
+.word 37 # 0x10010004
+.word 2 # 0x10010008
+.word 3 # 0x1001000c
+.word 1 # 0x10010010
+# int a = 32, b = 37...
+# word: tipo de dado que será trabalhado
+
+.text
+main: addi $2, $0, 5
+      syscall
+      
+      lui $8, 0x1001 # lui: desloca o endereço 16 bits para a esquerda e guarda no $8; sempre devo destinar um registrador para guardar o valor de memória 0x1001
+      # $8 <= 0x10010000
+      sw $2, 0($8) # o dado lido vai sobrepor o valor 32 que está na memória
+      sw $2, 4($8) # transformei o $8 em um endereço de memória (ponteiro)
+      # sw (store word): salva o dado
+      
+      # lw (load word): carrega o dado para ser usado no que eu quiser
+      lw $4, 12($8) # nesse caso específico, estou imprimindo o valor
+      addi $2, $0, 1
+      syscall
+      
+      addi $2, $0, 10
+      syscall
 ~~~
