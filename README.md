@@ -260,7 +260,7 @@ saiDoLaco:
 ~~~asm
 $fonte2, Constante($fonte1)
 ~~~
-O que o "sw" faz:
+
 
 
   
