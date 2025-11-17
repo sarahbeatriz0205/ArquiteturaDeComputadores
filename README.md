@@ -308,3 +308,17 @@ main: addi $2, $0, 5
       addi $2, $0, 10
       syscall
 ~~~
+
+
+
+### Jogo
+- MMIO (Memory Mapped Imput/Output): entrada e saída mapeada na memória
+- Cada endereço de memória corresponde a uma unidade gráfica (UG)
+- uma unidade gráfica deve corresponder a um ponto no monitor
+- colocar uma informação RGB na memória (estou fazendo uma unidade gráfica para um pixel)
+- obs: não fazer 1x1
+
+[][R][G][B]
+   |
+   |
+  0 - ff
