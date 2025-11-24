@@ -322,3 +322,8 @@ main: addi $2, $0, 5
    |
    |
   0 - ff
+
+### Construção NPC e movimento com teclado
+- Movimento é uma sobreposição de imagens (x frames por segundo)
+- Pintar e apagar quadrado por quadrado
+- Criar uma cópia do cenário na região baixa da memória
